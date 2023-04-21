@@ -17,20 +17,20 @@ let numero1=0;
 let numero2=0;
 let resultado=0;
 
-function pedirNumeros(num1, num2){
-    numero1= num1;
-    numero2= num2;
-    return parseInt (numero1) , parseInt (numero2);
+function pedirNumeros(){
+    numero1= parseInt(prompt("Ingrese primer numero"));
+    numero2= parseInt(prompt("Ingrese segundo numero"));
+    return numero1 , numero2;
     
     //console.log(numero1 , numero2);
 }
 
 
-function sumar(numero1, numero2){
+function sumar(){
     resultado= numero1+numero2;
     console.log(resultado);
 }
-sumar (pedirNumeros(prompt("ingrese el primer numero"), prompt("ingrese el segundo numero")));
+sumar(pedirNumeros());
 
 //console.log(parseInt (numero1)+ parseInt (numero2));
 
