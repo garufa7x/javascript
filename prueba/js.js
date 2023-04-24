@@ -13,21 +13,39 @@ let total=0;*/
     total=numero1+numero2;    
 }*/
 
-let numero1=0;
-let numero2=0;
-let resultado=0;
+let numero1;
+let numero2;
+let oper; 
+let resultado;
 
 function pedirNumeros(){
-    numero1= parseInt(prompt("Ingrese primer numero"));
-    numero2= parseInt(prompt("Ingrese segundo numero"));
-    return numero1 , numero2;
-    
-    //console.log(numero1 , numero2);
+    numero1= parseFloat(prompt("Ingrese primer numero"));
+    numero2= parseFloat(prompt("Ingrese segundo numero"));
+    oper= prompt("Ingrese operador");
+        while(isNaN(numero1, numero2)){
+        numero1= parseFloat(prompt("DEBE INGRESAR UN PRIMER NUMERO"));
+        numero2= parseFloat(prompt("DEBE INGRESAR UN SEGUNDO NUMERO"));
+    }
+    /*while(oper != ("+", "-", "*", "/")){
+    oper= prompt("DEBE INGRESAR UN OPERADOR ARITMETICO");
+    }*/
+    return numero1 , numero2, oper;
 }
 
-
 function sumar(){
-    resultado= numero1+numero2;
+    
+    if (oper=="+"){
+        resultado=numero1+numero2;
+    }
+    else if(oper=="-"){
+        resultado=numero1-numero2;
+    }
+    else if(oper=="*"){
+        resultado=numero1*numero2;
+    }
+    else if(oper=="/"){
+        resultado=numero1/numero2;
+    }
     console.log(resultado);
 }
 sumar(pedirNumeros());
