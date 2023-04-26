@@ -13,42 +13,40 @@ let total=0;*/
     total=numero1+numero2;    
 }*/
 
-let numero1;
+let numero1;    //variables globales
 let numero2;
-let oper; 
+let operador; 
 let resultado;
 
-function pedirNumeros(){
+function pedirNumeros(){    //funcion pedir numeros y operador
     numero1= parseFloat(prompt("Ingrese primer numero"));
     numero2= parseFloat(prompt("Ingrese segundo numero"));
-    oper= prompt("Ingrese operador");
-        while(isNaN(numero1, numero2)){
+    operador= prompt("Ingrese operador");
+        while(isNaN(numero1) || isNaN(numero2) || !(operador == '+' || operador == '-' || operador == '*' || operador == '/')){     //valida numeros y operador
         numero1= parseFloat(prompt("DEBE INGRESAR UN PRIMER NUMERO"));
         numero2= parseFloat(prompt("DEBE INGRESAR UN SEGUNDO NUMERO"));
-    }
-    /*while(oper != ("+", "-", "*", "/")){
-    oper= prompt("DEBE INGRESAR UN OPERADOR ARITMETICO");
-    }*/
-    return numero1 , numero2, oper;
+        operador= prompt("Ingrese operador");
+    }    
+    return numero1 , numero2, operador;     //retorna valores ingresados por prompt
 }
 
-function sumar(){
+function calcular(){   //funcion calcular
     
-    if (oper=="+"){
+    if (operador=="+"){
         resultado=numero1+numero2;
     }
-    else if(oper=="-"){
+    else if(operador=="-"){
         resultado=numero1-numero2;
     }
-    else if(oper=="*"){
+    else if(operador=="*"){
         resultado=numero1*numero2;
     }
-    else if(oper=="/"){
+    else if(operador=="/"){
         resultado=numero1/numero2;
     }
     console.log(resultado);
 }
-sumar(pedirNumeros());
+calcular(pedirNumeros());   //llamo a la funcion calcular pasando como argumento la funcion pedirNumeros
 
 //console.log(parseInt (numero1)+ parseInt (numero2));
 
