@@ -13,40 +13,70 @@ let total=0;*/
     total=numero1+numero2;    
 }*/
 
-let numero1;    //variables globales
+/*function pedirDatos(){    //funcion pedir numeros y operador
+let numero1;
 let numero2;
-let operador; 
-let resultado;
+let operador;
 
-function pedirNumeros(){    //funcion pedir numeros y operador
     numero1= parseFloat(prompt("Ingrese primer numero"));
     numero2= parseFloat(prompt("Ingrese segundo numero"));
-    operador= prompt("Ingrese operador");
+    operador= prompt("Ingrese operador +, -, *, o /");
         while(isNaN(numero1) || isNaN(numero2) || !(operador == '+' || operador == '-' || operador == '*' || operador == '/')){     //valida numeros y operador
         numero1= parseFloat(prompt("DEBE INGRESAR UN PRIMER NUMERO"));
         numero2= parseFloat(prompt("DEBE INGRESAR UN SEGUNDO NUMERO"));
-        operador= prompt("Ingrese operador");
-    }    
-    return numero1 , numero2, operador;     //retorna valores ingresados por prompt
+        operador= prompt("DEBE INGRESAR UN OPERADOR +, -, *, o /");
+    }   
+    calcular(numero1 , numero2, operador);     //llama a la funcion calcular y le pasa 3 argumentos.
+}*/
+
+//Programa que calcula operaciones aritemicas basicas(+, -, * y /) y muestra el resultado por consola. 
+//Consta de 3 funciones flecha asignadas a constantes que piden datos al usuario, los valida, calcula y muestra el resultado.
+//No se usaron variables globales. 
+
+const pedirDatos = () => {    //funcion pedir numeros y operador. Validacion con while
+    let numero1;
+    let numero2;
+    let operador;
+    
+    alert("Ingresa dos numeros y una operacion (+, -, * o /). Recorda que no se puede dividir un numero por 0.");
+
+    numero1= parseFloat(prompt("Ingresa el primer numero"));
+    numero2= parseFloat(prompt("Ingresa el segundo numero"));
+    operador= prompt("Ingresa el operador +, -, *, o /");
+        
+        while(isNaN(numero1) || isNaN(numero2) || !(operador=="+" || operador=="-" || operador=="*" || operador=="/")){     //valida numeros y operador
+            numero1= parseFloat(prompt("DEBES INGRESAR EL PRIMER NUMERO"));
+            numero2= parseFloat(prompt("DEBES INGRESAR EL SEGUNDO NUMERO"));
+            operador= prompt("DEBES INGRESAR EL OPERADOR +, -, *, o /");
+    }   
+    calcular(numero1 , numero2, operador);    //llama a la funcion calcular y le pasa 3 argumentos.
 }
 
-function calcular(){   //funcion calcular
-    
+const calcular = (numero1 , numero2, operador) => {     //funcion calcular. Valida division por cero.
+    let resultado; 
     if (operador=="+"){
-        resultado=numero1+numero2;
+    resultado=numero1+numero2;
     }
     else if(operador=="-"){
-        resultado=numero1-numero2;
+    resultado=numero1-numero2;
     }
     else if(operador=="*"){
-        resultado=numero1*numero2;
+    resultado=numero1*numero2;
     }
     else if(operador=="/"){
-        resultado=numero1/numero2;
+        if(numero2 !==0){
+    resultado=numero1/numero2;
+        }
+            else{
+                alert("No se puede dividir un numero por 0.");
+            }
     }
-    console.log(resultado);
+    mostrarResultado(resultado);
 }
-calcular(pedirNumeros());   //llamo a la funcion calcular pasando como argumento la funcion pedirNumeros
+
+const mostrarResultado = resultado => console.log("El resultado de la operacion es "+ resultado);   //muestra resultado.
+
+pedirDatos();   //llamo a la funcion pedirDatos.
 
 //console.log(parseInt (numero1)+ parseInt (numero2));
 
@@ -176,5 +206,68 @@ const calcularPoliza = m2 =>  M2 * valorM2 * comision;
 console.log("El costo de la póliza es: $" , calcularPoliza(M2));*/
     
 
+/*function ingresarDatos() {
+	let numero1, numero2, operacion;
 
+	alert(
+		'Ingresará dos números y una operación (+, -, *, /) para realizar un calculo obteniendo el resultado. Acontinuación le mostraremos ejemplos, recuerde que no se puede realizar una división por 0 para evitar errores, gracias. \n\n5 + 5 = 10 \n5 - 5 = 0 \n5 * 5 = 25 \n5 / 5 = 1'
+	);
+
+	numero1 = Number(prompt('Ingrese el primer número:'));
+	numero2 = Number(prompt('Ingrese el segundo número:'));
+	operacion = prompt('Ingrese una operación de las siguientes(+, -, *, /):');
+
+	calcular(numero1, numero2, operacion);
+}
+
+// creamos la función calcular la cual recibe tres parámetros (valor1, valor2, operacion) retornando el resultado del calculo
+function calcular(valor1, valor2, operacion) {
+	let resultado;
+
+	switch (operacion) {
+		case '+':
+			resultado = valor1 + valor2;
+			mostrarResultado('Operación sumar', valor1, valor2, operacion, resultado);
+			break;
+		case '-':
+			resultado = valor1 - valor2;
+			mostrarResultado('Operación restar', valor1, valor2, operacion, resultado);
+			break;
+		case '*':
+			resultado = valor1 * valor2;
+			mostrarResultado('Operación multiplicar', valor1, valor2, operacion, resultado);
+			break;
+		case '/':
+			if (valor2 !== 0) {
+				resultado = valor1 / valor2;
+				mostrarResultado('Operación dividir', valor1, valor2, operacion, resultado);
+			} else {
+				// Error al dividir por 0
+				mensajeError(valor2, operacion);
+			}
+			break;
+		default:
+			mensajeError(valor2, operacion);
+			break;
+	}
+
+	return resultado;
+}
+
+function mensajeError(valor2, operacion) {
+	if (valor2 === 0 && operacion === '/') {
+		alert(':( Error el divisor no puede ser ' + valor2 + ' . Por favor introduzca un valor válido para esta operación.');
+		console.error(':( Error el divisor no puede ser ' + valor2 + ' . Por favor introduzca un valor válido para esta operación.');
+	} else {
+		alert(':( Error, se ha seleccionado una operación (' + operacion + ') no válida.');
+		console.error(':( Error, se ha seleccionado una operación (' + operacion + ') no válida.');
+	}
+}
+
+function mostrarResultado(texto, valor1, valor2, operacion, resultado) {
+	alert(texto + ': \n\n' + valor1 + ' ' + operacion + ' ' + valor2 + ' = ' + resultado);
+	console.log(valor1 + ' ' + operacion + ' ' + valor2 + ' = ' + resultado);
+}
+
+ingresarDatos();*/
     
