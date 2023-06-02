@@ -1,0 +1,122 @@
+[
+    {
+        "id": "casco-01",
+        "titulo": "Casco 01",
+        "imagen": "./img/cascos/casco1.jpg",
+        "categoria": {
+            "nombre": "Cascos",
+            "id": "cascos"
+        },
+        "precio": 25000
+    },
+    {
+        "id": "casco-02",
+        "titulo": "Casco 02",
+        "imagen": "./img/cascos/casco2.jpg",
+        "categoria": {
+            "nombre": "Cascos",
+            "id": "cascos"
+        },
+        "precio": 35000
+    },
+    {
+        "id": "casco-03",
+        "titulo": "Casco 03",
+        "imagen": "./img/cascos/casco3.jpg",
+        "categoria": {
+            "nombre": "Cascos",
+            "id": "cascos"
+        },
+        "precio": 15000
+    },
+    {
+        "id": "casco-04",
+        "titulo": "Casco 04",
+        "imagen": "./img/cascos/casco4.jpg",
+        "categoria": {
+            "nombre": "Cascos",
+            "id": "cascos"
+        },
+        "precio": 45000
+    },
+    {
+        "id": "campera-01",
+        "titulo": "Campera 01",
+        "imagen": "./img/camperas/campera1.jpg",
+        "categoria": {
+            "nombre": "Camperas",
+            "id": "camperas"
+        },
+        "precio": 78000
+    },
+    {
+        "id": "campera-02",
+        "titulo": "Campera 02",
+        "imagen": "./img/camperas/campera2.jpg",
+        "categoria": {
+            "nombre": "Camperas",
+            "id": "camperas"
+        },
+        "precio": 100000
+    },
+    {
+        "id": "campera-03",
+        "titulo": "Campera 03",
+        "imagen": "./img/camperas/campera3.jpg",
+        "categoria": {
+            "nombre": "Camperas",
+            "id": "camperas"
+        },
+        "precio": 670000
+    },
+    {
+        "id": "campera-04",
+        "titulo": "Campera 04",
+        "imagen": "./img/camperas/campera4.jpg",
+        "categoria": {
+            "nombre": "Camperas",
+            "id": "camperas"
+        },
+        "precio": 110000
+    },
+    {
+        "id": "guante-01",
+        "titulo": "Guante 01",
+        "imagen": "./img/guantes/guantes1.jpg",
+        "categoria": {
+            "nombre": "Guantes",
+            "id": "guantes"
+        },
+        "precio": 12000
+    },
+    {
+        "id": "guante-02",
+        "titulo": "Guante 02",
+        "imagen": "./img/guantes/guantes2.jpg",
+        "categoria": {
+            "nombre": "Guantes",
+            "id": "guantes"
+        },
+        "precio": 18000
+    },
+    {
+        "id": "guante-03",
+        "titulo": "Guante 03",
+        "imagen": "./img/guantes/guantes3.jpg",
+        "categoria": {
+            "nombre": "Guantes",
+            "id": "guantes"
+        },
+        "precio": 26789
+    },
+    {
+        "id": "guante-04",
+        "titulo": "Guante 04",
+        "imagen": "./img/guantes/guantes4.jpg",
+        "categoria": {
+            "nombre": "Guantes",
+            "id": "guantes"
+        },
+        "precio": 16432
+    }
+]

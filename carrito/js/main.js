@@ -1,134 +1,43 @@
+let productos = [];
 
-//Productos.
-const productos = [
-    {
-        "id": "casco-01",
-        "titulo": "Casco 01",
-        "imagen": "./img/cascos/casco1.jpg",
-        "categoria": {
-            "nombre": "Cascos",
-            "id": "cascos"
-        },
-        "precio": 25000
-    },
-    {
-        "id": "casco-02",
-        "titulo": "Casco 02",
-        "imagen": "./img/cascos/casco2.jpg",
-        "categoria": {
-            "nombre": "Cascos",
-            "id": "cascos"
-        },
-        "precio": 35000
-    },
-    {
-        "id": "casco-03",
-        "titulo": "Casco 03",
-        "imagen": "./img/cascos/casco3.jpg",
-        "categoria": {
-            "nombre": "Cascos",
-            "id": "cascos"
-        },
-        "precio": 15000
-    },
-    {
-        "id": "casco-04",
-        "titulo": "Casco 04",
-        "imagen": "./img/cascos/casco4.jpg",
-        "categoria": {
-            "nombre": "Cascos",
-            "id": "cascos"
-        },
-        "precio": 45000
-    },
-    {
-        "id": "campera-01",
-        "titulo": "Campera 01",
-        "imagen": "./img/camperas/campera1.jpg",
-        "categoria": {
-            "nombre": "Camperas",
-            "id": "camperas"
-        },
-        "precio": 78000
-    },
-    {
-        "id": "campera-02",
-        "titulo": "Campera 02",
-        "imagen": "./img/camperas/campera2.jpg",
-        "categoria": {
-            "nombre": "Camperas",
-            "id": "camperas"
-        },
-        "precio": 100000
-    },
-    {
-        "id": "campera-03",
-        "titulo": "Campera 03",
-        "imagen": "./img/camperas/campera3.jpg",
-        "categoria": {
-            "nombre": "Camperas",
-            "id": "camperas"
-        },
-        "precio": 670000
-    },
-    {
-        "id": "campera-04",
-        "titulo": "Campera 04",
-        "imagen": "./img/camperas/campera4.jpg",
-        "categoria": {
-            "nombre": "Camperas",
-            "id": "camperas"
-        },
-        "precio": 110000
-    },
-    {
-        "id": "guante-01",
-        "titulo": "Guante 01",
-        "imagen": "./img/guantes/guantes1.jpg",
-        "categoria": {
-            "nombre": "Guantes",
-            "id": "guantes"
-        },
-        "precio": 12000
-    },
-    {
-        "id": "guante-02",
-        "titulo": "Guante 02",
-        "imagen": "./img/guantes/guantes2.jpg",
-        "categoria": {
-            "nombre": "Guantes",
-            "id": "guantes"
-        },
-        "precio": 18000
-    },
-    {
-        "id": "guante-03",
-        "titulo": "Guante 03",
-        "imagen": "./img/guantes/guantes3.jpg",
-        "categoria": {
-            "nombre": "Guantes",
-            "id": "guantes"
-        },
-        "precio": 26789
-    },
-    {
-        "id": "guante-04",
-        "titulo": "Guante 04",
-        "imagen": "./img/guantes/guantes4.jpg",
-        "categoria": {
-            "nombre": "Guantes",
-            "id": "guantes"
-        },
-        "precio": 16432
-    }
-]
-
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(productos);
+    })
 //Me traigo algunos elementos.
+
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
+
+async function realizarPeticion(datos) {
+    try {
+        const response = await fetch(datos);
+
+        // Comprobar si la respuesta es exitosa (código de estado HTTP en el rango 200-299)
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+        }
+
+        // Si la respuesta es exitosa, obtener los datos en formato JSON
+        const data = await response.json();
+
+        // Devolver los datos obtenidos
+        return data;
+    } catch (error) {
+        // Capturar cualquier error ocurrido durante la petición o el procesamiento de los datos
+        console.error(error);
+        // En caso de error, puedes devolver un valor por defecto o lanzar una excepción para manejarla en el código que llama a la función
+        return null;
+    } finally {
+        // Realizar cualquier acción necesaria al finalizar la petición
+        console.log('Petición finalizada');
+    }
+}
 
 //Carga los productos desde el array.
 function cargarProductos(productosElegidos) {
@@ -154,8 +63,7 @@ function cargarProductos(productosElegidos) {
     actualizarBotonesAgregar();    
 }
 
-//Llamo a la funcion para que aparezcan todos los productos cuando abro la pagina.
-cargarProductos(productos);
+
 
 //Hace foco en la categoria.
 botonesCategorias.forEach(boton => {
