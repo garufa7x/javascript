@@ -1,46 +1,29 @@
-let productos = [];
-
-fetch("./js/productos.json")
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        cargarProductos(productos);
-    })
-//Me traigo algunos elementos.
-
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
+let productos = [];
 
-async function realizarPeticion(datos) {
+//Pide los productos desde un archivo json en una promesa con async y await y tray-catch-finnaly para manejar los errores.
+const pedirProductos = async () => {
     try {
-        const response = await fetch(datos);
-
-        // Comprobar si la respuesta es exitosa (código de estado HTTP en el rango 200-299)
-        if (!response.ok) {
-            throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
-        }
-
-        // Si la respuesta es exitosa, obtener los datos en formato JSON
-        const data = await response.json();
-
-        // Devolver los datos obtenidos
-        return data;
-    } catch (error) {
-        // Capturar cualquier error ocurrido durante la petición o el procesamiento de los datos
-        console.error(error);
-        // En caso de error, puedes devolver un valor por defecto o lanzar una excepción para manejarla en el código que llama a la función
-        return null;
-    } finally {
-        // Realizar cualquier acción necesaria al finalizar la petición
-        console.log('Petición finalizada');
+        const respuesta = await fetch("./js/productos.json");
+        const datos = await respuesta.json();
+        productos = datos;
+        cargarProductos(productos);
+    }
+    catch {
+        console.log(error);
+    }
+    finally {
+        console.log("Prueba terminada.");
     }
 }
+pedirProductos()
 
 //Carga los productos desde el array.
-function cargarProductos(productosElegidos) {
+async function cargarProductos(productosElegidos) {
     //Vacia el html entre categorias.
     contenedorProductos.innerHTML = "";
 
@@ -60,7 +43,7 @@ function cargarProductos(productosElegidos) {
         contenedorProductos.append(div);
     })
 
-    actualizarBotonesAgregar();    
+    actualizarBotonesAgregar();
 }
 
 
@@ -90,7 +73,7 @@ function actualizarBotonesAgregar() {
     botonesAgregar = document.querySelectorAll(".producto-agregar");
     //Paso como argumento agregarAlCarrito.
     botonesAgregar.forEach(boton => {
-        boton.addEventListener("click", agregarAlCarrito);        
+        boton.addEventListener("click", agregarAlCarrito);
     });
 }
 
@@ -109,7 +92,7 @@ if (productosEnCarritoLS) {
 function agregarAlCarrito(e) {
     //Busco en el parametro e el id que viene de la funcion actualizarBotonesAgregar (linea 182).
     const idBoton = e.currentTarget.id;
-    const productoAgregado = productos.find(producto => producto.id === idBoton);    
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
     //Si lo encuentra aumenta cantidad, sino hace un push con la cantidad 1.
     if (productosEnCarrito.some(producto => producto.id === idBoton)) {
         const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
@@ -121,11 +104,11 @@ function agregarAlCarrito(e) {
     //Actualizo numero carrito.
     actualizarNumerito();
     //Guardo en LS.
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));    
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
 //Sumo las cantidades y muestro al lado de Carrito.
 function actualizarNumerito() {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numerito.innerText = nuevoNumerito;    
+    numerito.innerText = nuevoNumerito;
 }
