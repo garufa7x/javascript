@@ -5,7 +5,7 @@ let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 let productos = [];
 
-//Pide los productos desde un archivo json en una promesa con async y await y tray-catch-finnaly para manejar los errores.
+//Pide los productos desde un archivo json con async y await y tray-catch-finnaly para manejar los errores.
 const pedirProductos = async () => {
     try {
         const respuesta = await fetch("./js/productos.json");
