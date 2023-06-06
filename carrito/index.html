@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TiendaAgus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
     <div class="wrapper">
-                
-        <aside>            
+
+        <aside>
             <header>
-                <h1 class="logo">Tienda Agus</h1>
+                <h1 class="logo"><i class="bi bi-shop-window"></i>Tienda Agus</h1>
             </header>
+
             <nav>
                 <ul class="menu">
                     <li>
-                        <button id="todos" class="boton-menu boton-categoria active">Todos los productos</button>
+                        <button id="todos" class="boton-menu boton-categoria active"><i
+                                class="fa-brands fa-product-hunt"></i>Productos</button>
                     </li>
                     <li>
-                        <button id="cascos" class="boton-menu boton-categoria">Cascos</button>
+                        <button id="cascos" class="boton-menu boton-categoria"><i
+                                class="fa-solid fa-helmet-un"></i>Cascos</button>
                     </li>
                     <li>
-                        <button id="camperas" class="boton-menu boton-categoria">Camperas</button>
+                        <button id="camperas" class="boton-menu boton-categoria"><i
+                                class="fa-solid fa-shirt"></i>Camperas</button>
                     </li>
                     <li>
-                        <button id="guantes" class="boton-menu boton-categoria">Guantes</button>
+                        <button id="guantes" class="boton-menu boton-categoria"><i
+                                class="fa-regular fa-hand"></i>Guantes</button>
                     </li>
                     <li>
                         <a class="boton-menu boton-carrito" href="./carrito.html">
-                            Carrito <span id="numerito" class="numerito">0</span>
+                            <i class="bi bi-cart"></i>Carrito <span id="numerito" class="numerito">0</span>
                         </a>
                     </li>
                 </ul>
@@ -41,9 +51,9 @@
             </footer>
         </aside>
         <main>
-            <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+            <h2 class="titulo-principal" id="titulo-principal"><i class="fa-brands fa-product-hunt"></i>Productos</h2>
             <div id="contenedor-productos" class="contenedor-productos">
-                <!-- Aca vienen los produtos del array -->
+                <!-- Aca vienen los produtos del json -->
             </div>
         </main>
     </div>

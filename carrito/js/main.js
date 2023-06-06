@@ -17,12 +17,12 @@ const pedirProductos = async () => {
         console.log(error);
     }
     finally {
-        console.log("Prueba terminada.");
+        //console.log("Prueba terminada.");
     }
 }
 pedirProductos()
 
-//Carga los productos desde el array.
+//Carga los productos desde el json.
 async function cargarProductos(productosElegidos) {
     //Vacia el html entre categorias.
     contenedorProductos.innerHTML = "";
@@ -32,8 +32,8 @@ async function cargarProductos(productosElegidos) {
         const div = document.createElement("div");
         div.classList.add("producto");
         div.innerHTML = `
-            <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
             <div class="producto-detalles">
+                <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">            
                 <h3 class="producto-titulo">${producto.titulo}</h3>
                 <p class="producto-precio">$${producto.precio}</p>
                 <button class="producto-agregar" id="${producto.id}">Agregar</button>
@@ -61,7 +61,7 @@ botonesCategorias.forEach(boton => {
             const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
             cargarProductos(productosBoton);
         } else {
-            tituloPrincipal.innerText = "Todos los productos";
+            tituloPrincipal.innerHTML = `Todos los productos`;
             cargarProductos(productos);
         }
 
@@ -90,10 +90,12 @@ if (productosEnCarritoLS) {
 
 //Agrego al carrito.
 function agregarAlCarrito(e) {
-    //Busco en el parametro e el id que viene de la funcion actualizarBotonesAgregar (linea 182).
+    //Busco en el parametro e el id que viene de la funcion actualizarBotonesAgregar (linea 76).
+
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
     //Si lo encuentra aumenta cantidad, sino hace un push con la cantidad 1.
+
     if (productosEnCarrito.some(producto => producto.id === idBoton)) {
         const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
         productosEnCarrito[index].cantidad++;
