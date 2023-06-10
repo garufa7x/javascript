@@ -90,6 +90,27 @@ if (productosEnCarritoLS) {
 
 //Agrego al carrito.
 function agregarAlCarrito(e) {
+
+    Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "rgb(21, 21, 92)",
+          borderRadius: ".5rem",
+          textTransform: "uppercase",
+          fontSize: ".8rem"
+        },
+        offset: {
+            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
+    
     //Busco en el parametro e el id que viene de la funcion actualizarBotonesAgregar (linea 76).
 
     const idBoton = e.currentTarget.id;
