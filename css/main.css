@@ -30,14 +30,15 @@ h3{
 }
 
 aside {
-    padding: 2rem;
-    padding-right: 0;
+    padding: 1rem;
+    padding-right: 1rem;
     color: white;    
     top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -220,8 +221,9 @@ main {
 
 .carrito-acciones {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .carrito-acciones-vaciar {
@@ -293,7 +295,9 @@ main {
 @media screen and (max-width: 600px) {    
     
     .wrapper {
-        grid-template-columns: 1fr;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 
     aside {
@@ -324,10 +328,14 @@ main {
     }
 
     .header-mobile {
+        z-index: 9;
+        top: 0;
+        position: sticky;
         padding: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: black;
     }
 
     .header-mobile .logo {
@@ -349,6 +357,10 @@ main {
         grid-template-columns: 1fr;
     }
     .carrito-producto {
+        flex-direction: column;
+    }
+
+    .carrito-acciones-derecha {
         flex-direction: column;
     }
 }

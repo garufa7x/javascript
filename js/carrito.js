@@ -112,9 +112,25 @@ function eliminarDelCarrito(e) {
 //Vacio el Carrito, pongo el array en 0. Actualizo LS.
 botonVaciar.addEventListener("click", vaciarCarrito);
 function vaciarCarrito() {
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCarrito();
+
+    Swal.fire({
+        title: 'Se van a eliminar los productos. ¿Estas seguro?',
+        icon: 'question',
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        confirmButtonColor: 'red',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+            cargarProductosCarrito();
+        } 
+      })
+
+    
 }
 
 //Actualizo el total.
